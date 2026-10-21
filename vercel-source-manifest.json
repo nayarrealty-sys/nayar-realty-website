@@ -1,0 +1,32 @@
+{
+  "captured_from": "https://nayarrealty.vercel.app/",
+  "stable_domain_for_qr": "https://nayarrealty.com.mx/",
+  "vercel": {
+    "team_id": "team_aBxFhs2V0SjESD5wTQPn30N3",
+    "project_id": "prj_eR7DnrKe3Ir063ljnPZYf08I3AiV",
+    "project_name": "v0-nayar-realty-website",
+    "framework": "nextjs",
+    "stable_backup_deployment_id": "dpl_2TEUakLCXAmS7VMMdJwx4PBmjGTM",
+    "stable_backup_deployment_url": "v0-nayar-realty-website-1v7dqwiim.vercel.app",
+    "source": "v0-web",
+    "domain_verified": true
+  },
+  "source_tree": {
+    "file_count_detected": 132,
+    "important_files": [
+      "src/app/page.tsx",
+      "src/app/layout.tsx",
+      "src/app/globals.css",
+      "src/app/loading.tsx",
+      "src/lib/properties-data.ts",
+      "src/lib/translations.ts",
+      "src/lib/utils.ts",
+      "src/package.json",
+      "src/next.config.mjs",
+      "src/postcss.config.mjs",
+      "src/tailwind.config.ts",
+      "src/tsconfig.json"
+    ],
+    "note": "The original Vercel deployment remains the exact source backup. This migration base is a clean static copy using the same production image URLs so it can be moved to GitHub immediately."
+  }
+}

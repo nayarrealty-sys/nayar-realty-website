@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nayar Realty | Riviera Nayarit</title>
+  <meta name="description" content="Propiedades, desarrollo y brokerage inmobiliario en Riviera Nayarit.">
+  <style>
+    :root {
+      --green:#0e6b57; --green2:#084d40; --gold:#e5b83d; --ink:#1e293b; --muted:#64748b;
+      --cream:#f7f7f2; --white:#fff; --line:#e5e7eb;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.55}
+    img{display:block;max-width:100%} a{color:inherit}
+    .container{width:min(1180px,calc(100% - 34px));margin:auto}
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{height:84px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo img{height:64px;width:auto} nav{display:flex;gap:28px;align-items:center}
+    nav a{text-decoration:none;font-weight:600;color:#334155}
+    .hero{min-height:82vh;background:linear-gradient(90deg,rgba(0,0,0,.45),rgba(0,0,0,.15)),url('https://nayarrealty.vercel.app/images/hero-background.jpg') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+    .hero h1{font-size:clamp(3rem,7vw,6.5rem);line-height:.95;margin:0 0 24px}
+    .hero h1 span{display:block;color:#f5d95d}
+    .hero p{font-size:clamp(1.1rem,2.2vw,1.6rem);max-width:850px;margin:auto}
+    section{padding:88px 0}
+    .section-title{max-width:820px;margin-bottom:42px}
+    .section-title h2{font-size:clamp(2.2rem,4.5vw,4rem);line-height:1.05;margin:0 0 16px}
+    .section-title p{font-size:1.12rem;color:var(--muted)}
+    .invest{color:#fff;background:linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.70)),url('https://nayarrealty.vercel.app/images/aerial-lo-de-marcos-sunset.jpg') center/cover}
+    .invest .section-title p{color:rgba(255,255,255,.82)}
+    .invest-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .invest-card{background:rgba(255,255,255,.95);color:var(--ink);padding:28px;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.20)}
+    .invest-card h3{margin-top:0;font-size:1.25rem} .invest-card p{margin-bottom:0;color:#475569}
+    .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+    .about-image{border-radius:28px;overflow:hidden;min-height:560px;background:url('https://nayarrealty.vercel.app/images/aerial-riviera-nayarit-bay.jpg') center/cover}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
+    .stat{background:var(--cream);padding:24px;border-radius:16px} .stat strong{font-size:2rem;color:var(--green)}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+    .service{border:1px solid var(--line);padding:23px;border-radius:16px}
+    .properties{background:#f8fafc}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 30px}
+    .filter{border:1px solid #cbd5e1;background:#fff;padding:10px 15px;border-radius:999px;cursor:pointer;font-weight:600}
+    .filter.active{background:var(--green);color:#fff;border-color:var(--green)}
+    .property-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .property-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 12px 35px rgba(15,23,42,.08);display:flex;flex-direction:column}
+    .property-image{position:relative;height:245px;background:#e2e8f0} .property-image img{width:100%;height:100%;object-fit:cover}
+    .badge{position:absolute;left:14px;top:14px;background:var(--gold);color:#1f2937;padding:7px 10px;border-radius:999px;font-size:.75rem;font-weight:800}
+    .property-body{padding:20px;display:flex;flex:1;flex-direction:column}
+    .property-type{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--green);font-weight:800}
+    .property-body h3{margin:7px 0;font-size:1.25rem} .location,.specs,.desc{color:#64748b;margin:5px 0}
+    .property-footer{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-top:auto;padding-top:20px}
+    .property-footer strong{color:var(--green2)} .small-btn{text-decoration:none;border:1px solid var(--green);padding:8px 12px;border-radius:10px;color:var(--green);font-weight:700}
+    .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+    .team-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;text-align:center}
+    .team-card img{width:100%;height:220px;object-fit:cover;background:#f1f5f9}
+    .team-card div{padding:18px} .team-card h3{margin:0 0 4px}
+    .testimonial{background:var(--green2);color:#fff;text-align:center}
+    .quote{max-width:800px;margin:auto;font-size:1.35rem}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+    form{display:grid;gap:13px} input,select,textarea{width:100%;padding:14px;border:1px solid #cbd5e1;border-radius:10px;font:inherit}
+    textarea{min-height:140px;resize:vertical} .btn{border:0;background:var(--green);color:#fff;padding:14px 18px;border-radius:10px;font-weight:800;cursor:pointer}
+    .contact-info{background:var(--cream);padding:28px;border-radius:20px}
+    footer{background:#0f172a;color:#cbd5e1;padding:50px 0}
+    footer .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px} footer h4{color:#fff}
+    @media(max-width:900px){.property-grid{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:1fr 1fr 1fr}.about-grid,.contact-grid{grid-template-columns:1fr}.services{grid-template-columns:1fr}}
+    @media(max-width:650px){nav{display:none}.nav{height:72px}.logo img{height:54px}.hero{min-height:70vh;padding:60px 0}section{padding:68px 0}.invest-grid,.property-grid,.team-grid,.stats{grid-template-columns:1fr}.about-image{min-height:380px}footer .footer-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#inicio"><img src="https://nayarrealty.vercel.app/images/nayar-logo.png" alt="Nayar Realty"></a>
+    <nav>
+      <a href="#inicio">Inicio</a><a href="#propiedades">Propiedades</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="inicio" class="hero">
+  <div class="container">
+    <h1>Tu hogar en el <span>paraíso tropical</span></h1>
+    <p>Descubre las mejores oportunidades inmobiliarias en la Riviera Nayarit</p>
+  </div>
+</section>
+
+<section class="invest">
+  <div class="container">
+    <div class="section-title"><h2>Por qué invertir hoy en la Riviera Nayarit</h2><p>Un corredor que combina playas, naturaleza y una infraestructura en pleno crecimiento.</p></div>
+    <div class="invest-grid">
+      <article class="invest-card"><h3>Conectividad mejorada</h3><p>Las nuevas autopistas han reducido considerablemente los tiempos entre Guadalajara, Tepic, Lo de Marcos y Puerto Vallarta, haciendo la región más accesible para turismo, residencia e inversión.</p></article>
+      <article class="invest-card"><h3>Más vuelos, más demanda</h3><p>Los aeropuertos de Puerto Vallarta y Tepic están en procesos de ampliación y modernización, preparando a la Riviera Nayarit para recibir más vuelos nacionales e internacionales en los próximos años.</p></article>
+      <article class="invest-card"><h3>Megaproyectos y capital de largo plazo</h3><p>Desarrollos de clase mundial, nuevos hoteles, proyectos residenciales y mejoras portuarias consolidan este tramo de costa como un destino estratégico para inversionistas.</p></article>
+      <article class="invest-card"><h3>Lo de Marcos en transformación</h3><p>Lo de Marcos está recibiendo inversiones importantes en infraestructura, servicios y proyectos boutique que buscan conservar el carácter del pueblo mientras elevan la calidad de vida.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="container about-grid">
+    <div>
+      <div class="section-title"><h2>Sobre Nayar Realty</h2><p>Nayar Realty es una firma de desarrollo y brokerage inmobiliario con base en Lo de Marcos, Nayarit. Desde hace más de 5 años acompañamos a personas e inversionistas en proyectos residenciales, fraccionamientos y propiedades boutique en la Riviera Nayarit.</p></div>
+      <div class="stats">
+        <div class="stat"><strong>+10 años</strong><br>de experiencia en bienes raíces en la Riviera Nayarit.</div>
+        <div class="stat"><strong>+50</strong><br>proyectos desarrollados, comercializados o acompañados en la región.</div>
+        <div class="stat"><strong>4 líneas</strong><br>construcción, ventas, gestorías y rentas.</div>
+      </div>
+      <div class="services">
+        <div class="service"><strong>Desarrollo y venta</strong><p>Fraccionamientos, lotes residenciales y proyectos en preventa en puntos estratégicos de la Riviera Nayarit.</p></div>
+        <div class="service"><strong>Arquitectura y construcción</strong><p>Diseño y ejecución de obra a través de nuestro equipo y aliados locales, alineados al contexto y al presupuesto de cada proyecto.</p></div>
+        <div class="service"><strong>Administración y operación</strong><p>Gestión y operación de hoteles boutique y propiedades en renta, con estándares de hospitalidad y atención al huésped.</p></div>
+      </div>
+    </div>
+    <div class="about-image" aria-label="Vista aérea Riviera Nayarit"></div>
+  </div>
+</section>
+
+<section id="propiedades" class="properties">
+  <div class="container">
+    <div class="section-title"><h2>Oportunidades inmobiliarias</h2><p>Descubre propiedades exclusivas en los destinos más codiciados de la Riviera Nayarit</p></div>
+    <div class="filters">
+      <button class="filter active" data-filter="Todas">Todas</button>
+      <button class="filter" data-filter="Casas residenciales">Casas residenciales</button>
+      <button class="filter" data-filter="Departamentos y dúplex">Departamentos y dúplex</button>
+      <button class="filter" data-filter="Terrenos residenciales">Terrenos residenciales</button>
+      <button class="filter" data-filter="Terrenos comerciales y mixtos">Terrenos comerciales y mixtos</button>
+      <button class="filter" data-filter="Terrenos hoteleros">Terrenos hoteleros</button>
+    </div>
+    <div class="property-grid">
+    <article class="property-card" data-category="Casas residenciales">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/casa-aurea-exterior-1.jpg" alt="Casa Áurea del Sol" loading="lazy">
+        <span class="badge">Nueva</span>
+      </div>
+      <div class="property-body">
+        <div class="property-type">Casas residenciales</div>
+        <h3>Casa Áurea del Sol</h3>
+        <p class="location">📍 Lo de Marcos</p>
+        <p class="specs">3 recámaras · 4.5 baños · 190.7 m² construcción total techada</p>
+        <p class="desc">Casa unifamiliar de diseño arquitectónico inspirada en la proporción áurea</p>
+        <div class="property-footer">
+          <strong>$495,000 USD</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Departamentos y dúplex">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/hacienda-aerial-1.jpg" alt="Hacienda del Bosque – Unidad 1 (2 Recámaras)" loading="lazy">
+        <span class="badge">Preventa</span>
+      </div>
+      <div class="property-body">
+        <div class="property-type">Departamentos y dúplex</div>
+        <h3>Hacienda del Bosque – Unidad 1 (2 Recámaras)</h3>
+        <p class="location">📍 La Parota Residencial, Lo de Marcos</p>
+        <p class="specs">2 recámaras · 126.60 m²</p>
+        <p class="desc">Departamento dúplex de 2 recámaras en desarrollo exclusivo de 3 unidades</p>
+        <div class="property-footer">
+          <strong>Precio disponible bajo consulta</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Departamentos y dúplex">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/hacienda-aerial-2.jpg" alt="Hacienda del Bosque – Unidad 2 (2 Recámaras)" loading="lazy">
+        <span class="badge">Preventa</span>
+      </div>
+      <div class="property-body">
+        <div class="property-type">Departamentos y dúplex</div>
+        <h3>Hacienda del Bosque – Unidad 2 (2 Recámaras)</h3>
+        <p class="location">📍 La Parota Residencial, Lo de Marcos</p>
+        <p class="specs">2 recámaras</p>
+        <p class="desc">Departamento dúplex de 2 recámaras en desarrollo exclusivo de 3 unidades</p>
+        <div class="property-footer">
+          <strong>Precio disponible bajo consulta</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Departamentos y dúplex">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/hacienda-entrance.jpg" alt="Hacienda del Bosque – Unidad 3 (3 Recámaras)" loading="lazy">
+        <span class="badge">Preventa</span>
+      </div>
+      <div class="property-body">
+        <div class="property-type">Departamentos y dúplex</div>
+        <h3>Hacienda del Bosque – Unidad 3 (3 Recámaras)</h3>
+        <p class="location">📍 La Parota Residencial, Lo de Marcos</p>
+        <p class="specs">3 recámaras · 132.48 m²</p>
+        <p class="desc">Departamento dúplex de 3 recámaras en desarrollo exclusivo de 3 unidades</p>
+        <div class="property-footer">
+          <strong>Precio disponible bajo consulta</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Terrenos residenciales">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/colinas-aerial-town.jpg" alt="Lotes residenciales con vista al mar – Colinas del Nayar" loading="lazy">
+        
+      </div>
+      <div class="property-body">
+        <div class="property-type">Terrenos residenciales</div>
+        <h3>Lotes residenciales con vista al mar – Colinas del Nayar</h3>
+        <p class="location">📍 Riviera Nayarit</p>
+        <p class="specs">Desde 840.67 m²</p>
+        <p class="desc">Lotes residenciales con vista directa al mar en desarrollo de lujo</p>
+        <div class="property-footer">
+          <strong>Desde $4,455,551 MXN</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Terrenos comerciales y mixtos">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/colinas-branding.jpg" alt="Lotes comerciales – Colinas del Nayar" loading="lazy">
+        
+      </div>
+      <div class="property-body">
+        <div class="property-type">Terrenos comerciales y mixtos</div>
+        <h3>Lotes comerciales – Colinas del Nayar</h3>
+        <p class="location">📍 Riviera Nayarit</p>
+        <p class="specs">Desde 859.05 m²</p>
+        <p class="desc">Lotes comerciales estratégicamente posicionados. Ideal para plazas, coworking o wellness</p>
+        <div class="property-footer">
+          <strong>Desde $4,552,965 MXN</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Terrenos hoteleros">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/colinas-masterplan.jpg" alt="Lotes hoteleros – Colinas del Nayar" loading="lazy">
+        
+      </div>
+      <div class="property-body">
+        <div class="property-type">Terrenos hoteleros</div>
+        <h3>Lotes hoteleros – Colinas del Nayar</h3>
+        <p class="location">📍 Riviera Nayarit</p>
+        <p class="specs">Desde 8,147.22 m²</p>
+        <p class="desc">Lotes hoteleros exclusivos. Hasta 80 cuartos por hectárea. Ideal para resort boutique</p>
+        <div class="property-footer">
+          <strong>Desde $43,180,266 MXN</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Terrenos comerciales y mixtos">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/casa-triangulo-aerial-1.jpg" alt="Casa Triángulo" loading="lazy">
+        <span class="badge">Oportunidad</span>
+      </div>
+      <div class="property-body">
+        <div class="property-type">Terrenos comerciales y mixtos</div>
+        <h3>Casa Triángulo</h3>
+        <p class="location">📍 Salida de Lo de Marcos, Nayarit</p>
+        <p class="specs">371 m²</p>
+        <p class="desc">Lote de alta visibilidad con potencial comercial y residencial</p>
+        <div class="property-footer">
+          <strong>$3,800,000 MXN</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Terrenos residenciales">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/lote-papelillos-ambiente.jpg" alt="Lote Papelillos – Lote 4" loading="lazy">
+        
+      </div>
+      <div class="property-body">
+        <div class="property-type">Terrenos residenciales</div>
+        <h3>Lote Papelillos – Lote 4</h3>
+        <p class="location">📍 Zona Papelillos, Compostela, Nayarit</p>
+        <p class="specs">789.13 m²</p>
+        <p class="desc">Lote en preventa, ubicación estratégica cerca de One&amp;Only Mandarina.</p>
+        <div class="property-footer">
+          <strong>$2,761,955 MXN</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Casas residenciales">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/casa-inspiracion-exterior-front.jpg" alt="Casa Inspiración" loading="lazy">
+        
+      </div>
+      <div class="property-body">
+        <div class="property-type">Casas residenciales</div>
+        <h3>Casa Inspiración</h3>
+        <p class="location">📍 La Parota Residencial, Lo de Marcos, Nayarit</p>
+        <p class="specs">4 · 243.8 m²</p>
+        <p class="desc">Diseño contemporáneo con espacios abiertos</p>
+        <div class="property-footer">
+          <strong>$550,000 USD</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Casas residenciales">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/casa-amanecer-exterior-pool.jpg" alt="Casa Amanecer" loading="lazy">
+        <span class="badge">Vendida</span>
+      </div>
+      <div class="property-body">
+        <div class="property-type">Casas residenciales</div>
+        <h3>Casa Amanecer</h3>
+        <p class="location">📍 Lo de Marcos, Nayarit</p>
+        <p class="specs">Construcción terminada</p>
+        <p class="desc">Diseño que combina privacidad, funcionalidad y excelente ubicación.</p>
+        <div class="property-footer">
+          <strong></strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Casas residenciales">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/casa-perla-exterior-pool.jpg" alt="Casa Perla del Nayar" loading="lazy">
+        <span class="badge">Vendida</span>
+      </div>
+      <div class="property-body">
+        <div class="property-type">Casas residenciales</div>
+        <h3>Casa Perla del Nayar</h3>
+        <p class="location">📍 Lo de Marcos, Nayarit</p>
+        <p class="specs">6 · 162.31 m²</p>
+        <p class="desc">Arquitectura tropical con acabados de lujo - VENDIDA</p>
+        <div class="property-footer">
+          <strong>$650,000 USD</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Terrenos residenciales">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/colinas-lifestyle.jpg" alt="Lotes residenciales con vista a la selva – Colinas del Nayar" loading="lazy">
+        
+      </div>
+      <div class="property-body">
+        <div class="property-type">Terrenos residenciales</div>
+        <h3>Lotes residenciales con vista a la selva – Colinas del Nayar</h3>
+        <p class="location">📍 Riviera Nayarit</p>
+        <p class="specs">Desde 938.68 m²</p>
+        <p class="desc">22 lotes disponibles rodeados de colinas tropicales. Proyecto de baja densidad en preventa</p>
+        <div class="property-footer">
+          <strong>Desde $3,285,380 MXN</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    
+    <article class="property-card" data-category="Departamentos y dúplex">
+      <div class="property-image">
+        <img src="https://nayarrealty.vercel.app/images/casa-arboleda-unidad-exterior.jpg" alt="Casa Arboleda – Unidad 3" loading="lazy">
+        <span class="badge">En desarrollo</span>
+      </div>
+      <div class="property-body">
+        <div class="property-type">Departamentos y dúplex</div>
+        <h3>Casa Arboleda – Unidad 3</h3>
+        <p class="location">📍 Riviera Nayarit</p>
+        <p class="specs">144 m² por unidad</p>
+        <p class="desc">Unidad en exclusivo proyecto de 5 dúplex con diseño orgánico y vistas al mar.</p>
+        <div class="property-footer">
+          <strong>$499,000 USD</strong>
+          <a class="small-btn" href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title"><h2>Nuestro equipo</h2><p>En Nayar Realty creemos que el valor de una empresa está en las personas que la integran. Nuestro equipo combina experiencia local, visión estratégica y atención cercana para ofrecer un servicio integral en ventas, desarrollo, arquitectura y administración de propiedades.</p></div>
+    <div class="team-grid">
+      <article class="team-card"><img src="https://nayarrealty.vercel.app/images/team/lee-roy.jpg" alt="Lee Roy"><div><h3>Lee Roy</h3><strong>Master Broker y Desarrollador</strong><p>Más de 10 años de experiencia en la Riviera Nayarit. Licenciado en Derecho.</p></div></article>
+      <article class="team-card"><img src="https://nayarrealty.vercel.app/images/team/kin-larue.jpg" alt="Kin Larue"><div><h3>Kin Larue</h3><strong>Agente de ventas y gestor de listados</strong><p>Administrador de propiedades y coordinador operativo.</p></div></article>
+      <article class="team-card"><img src="https://nayarrealty.vercel.app/images/team/sakbe-larue.jpg" alt="Sakbé Larue"><div><h3>Sakbé Larue</h3><strong>Director del departamento de arquitectura</strong><p>Especialista en diseño y supervisión de desarrollos.</p></div></article>
+      <article class="team-card"><img src="https://nayarrealty.vercel.app/images/team/escala-logo.jpg" alt="Escala S.A. de C.V."><div><h3>Escala S.A. de C.V.</h3><strong>Firma de ingeniería colaboradora</strong><p>Especialistas en desarrollo de infraestructura y proyectos de construcción a gran escala.</p></div></article>
+      <article class="team-card"><img src="https://nayarrealty.vercel.app/images/team/estrada-abogados-logo.jpg" alt="Despacho Estrada Abogados"><div><h3>Despacho Estrada Abogados</h3><strong>Firma legal especializada</strong><p>Acompañamiento en regularización, escrituración y procesos legales de propiedad.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container quote">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <p>“Nayar Realty nos ayudó a encontrar la villa perfecta en Punta Mita. Su profesionalismo y conocimiento del mercado local fueron excepcionales.”</p>
+    <strong>Robert Johnson · Cliente de Estados Unidos</strong>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container contact-grid">
+    <div>
+      <div class="section-title"><h2>Contáctanos</h2><p>Estamos aquí para ayudarte a encontrar la propiedad perfecta en la Riviera Nayarit</p></div>
+      <form onsubmit="event.preventDefault();document.getElementById('formMsg').textContent='Formulario de respaldo: conectaremos el envío en la siguiente versión.';">
+        <input placeholder="Nombre completo">
+        <input type="email" placeholder="Email">
+        <select><option>Tipo de interés</option><option>Compra de propiedad</option><option>Inversión</option><option>Desarrollo</option><option>Administración</option></select>
+        <textarea placeholder="Envíanos un mensaje"></textarea>
+        <button class="btn" type="submit">Enviar mensaje</button>
+        <small id="formMsg"></small>
+      </form>
+    </div>
+    <aside class="contact-info">
+      <h3>Teléfono</h3><p>+52 322 227 7057</p>
+      <h3>Email</h3><p>nayarrealty@gmail.com</p>
+      <h3>Oficina</h3><p>Calle Luis Echeverría Nº26, Lo de Marcos, Nayarit, México</p>
+      <h3>Horarios de atención</h3><p>Lunes - Viernes: 9:00 AM - 6:00 PM<br>Sábados: 10:00 AM - 2:00 PM<br>Domingos: Cerrado</p>
+    </aside>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div><h4>Nayar Realty</h4><p>Tu socio de confianza en bienes raíces de lujo en la Riviera Nayarit.</p></div>
+    <div><h4>Navegación</h4><p>Inicio<br>Propiedades<br>Nosotros<br>Contacto</p></div>
+    <div><h4>Servicios</h4><p>Propiedades Residenciales<br>Inversión Hotelera<br>Bienes Raíces Comerciales<br>Asesoría de Inversión</p></div>
+  </div>
+  <div class="container" style="margin-top:35px;border-top:1px solid #334155;padding-top:20px">© 2025 Nayar Realty. Todos los derechos reservados.</div>
+</footer>
+
+<script>
+document.querySelectorAll('.filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.property-card').forEach(card => {
+      card.style.display=(f==='Todas'||card.dataset.category===f)?'flex':'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
